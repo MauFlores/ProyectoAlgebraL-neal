@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="javascript/code.js"></script>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/normalice.css">
+    <title>Document</title>
+</head>
+
+<body>
+   
+    <nav>
+    <ul class="sidebar">
+      <li onclick=hideSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+      <li><a href="index.html">Sistema3x3</a></li>
+      <li><a href="sistema4x4.html">Sistema4x4</a></li>
+      <li><a href="prueba.html">QUIZZ</a></li>
+      
+    </ul>
+    <ul>
+      <li><a href="#">SistemaXYZ</a></li>
+      <li class="hideOnMobile"><a href="index.html">Sistema3x3</a></li>
+      <li class="hideOnMobile"><a href="sistema4x4.html">Sistema4x4</a></li>
+      <li class="hideOnMobile"><a href="prueba.html">QUIZZ</a></li>
+      
+      <li class="menu-button" onclick=showSidebar()><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+    </ul>
+  </nav>
+
+   
+    
+
+    <section class="hero">
+        <div class="contenido-heroe">
+
+            <h2>Ingrese el sistema de ecuaciones</h2>
+            <p>Ingrese los datos correspondientes</p>
+        </div>
+    </section>
+
+    <main class="conteidosombra">
+        <h2>Ingrese los datos correspondientes</h2>
+
+            <div class="row">
+                <input id = "a1" type="number" placeholder="a1"> x +
+                <input id = "b1" type="number" placeholder="b1"> y +
+                <input id = "c1" type="number" placeholder="c1"> z =
+                <input id = "d1" type="number" placeholder="d1">
+                
+            </div>
+
+            <div class="row">
+                <input id = "a2" type="number" placeholder="a2"> x +
+                <input id = "b2" type="number" placeholder="b2"> y +
+                <input id = "c2" type="number" placeholder="c2"> z =
+                <input id = "d2" type="number" placeholder="d2">
+                
+            </div>
+
+            <div class="row">
+                <input id = "a3" type="number" placeholder="a3"> x +
+                <input id = "b3" type="number" placeholder="b3"> y +
+                <input id = "c3" type="number" placeholder="c3"> z =
+                <input id = "d3" type="number" placeholder="d3">
+                
+            </div>
+
+            <button onclick="resolverSistema()">Resolver</button>
+            <button onclick="mostrarProcedimiento()">Mostrar solución</button>
+
+
+            <div id="procedimiento" style="display: flex; flex-direction: column; gap: 10px; background: #000; padding: 20px; border-radius: 10px; color: #fff;"></div>
+            <div class="result" id = "resultado"></div>
+
+    </main>
+    
+</body>
+</html>

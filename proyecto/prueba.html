@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz - Sistemas de Ecuaciones</title>
+    <style>
+        :root {
+            --naranja: #B34B0C;
+            --naranja-oscuro: #7C3306;
+            --gris-obscuro: #37322E;
+            --gris-claro: #524944;
+            --gris-mas-claro: #6C6A68;
+            --blanco: #B3B2B0;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: url('../fotos/foto2.jpg');
+            color: var(--blanco);
+        }
+
+        nav {
+            background-color: var(--naranja);
+            box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        nav li {
+            height: 50px;
+        }
+
+        nav a {
+            height: 100%;
+            padding: 0 30px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            color: var(--blanco);
+        }
+
+        nav a:hover {
+            background-color: #f0f0f0;
+            color: var(--gris-obscuro);
+        }
+
+        nav li:first-child {
+            margin-right: auto;
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 250px;
+            background-color: rgba(247, 136, 10, 0.546);
+            backdrop-filter: blur(12px);
+            box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+            list-style: none;
+            display: none;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: flex-start;
+        }
+
+        .sidebar li {
+            width: 100%;
+        }
+
+        .sidebar a {
+            width: 100%;
+        }
+
+        .menu-button {
+            display: none;
+        }
+
+        @media (max-width: 800px) {
+            .hideOnMobile {
+                display: none;
+            }
+            .menu-button {
+                display: block;
+            }
+        }
+
+        @media (max-width: 400px) {
+            .sidebar {
+                width: 100%;
+            }
+        }
+
+        .quiz-container {
+            background-color: var(--gris-claro);
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+            width: 80%;
+            max-width: 600px;
+            margin: 100px auto;
+        }
+
+        .quiz-container h1 {
+            text-align: center;
+            color: var(--naranja);
+        }
+
+        .question {
+            margin-bottom: 1rem;
+        }
+
+        .options {
+            list-style: none;
+            padding: 0;
+        }
+
+        .options li {
+            margin: 0.5rem 0;
+        }
+
+        .options button {
+            background-color: var(--naranja);
+            color: var(--blanco);
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s;
+        }
+
+        .options button:hover {
+            background-color: var(--naranja-oscuro);
+        }
+
+        .result {
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .result p {
+            font-size: 1.2rem;
+        }
+
+        .restart-btn {
+            background-color: var(--naranja-oscuro);
+            color: var(--blanco);
+            border: none;
+            border-radius: 5px;
+            padding: 0.5rem 1rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            margin: 1rem auto 0;
+        }
+
+        .restart-btn:hover {
+            background-color: var(--naranja);
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <ul class="sidebar">
+            <li onclick="hideSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="m249 849-42-42 231-231-231-231 42-42 231 231 231-231 42 42-231 231 231 231-42 42-231-231-231 231Z"/></svg></a></li>
+            <li><a href="index.html">Sistema3x3</a></li>
+            <li><a href="sistema4x4.html">Sistema4x4</a></li>
+            <li><a href="prueba.html">QUIZZ</a></li>
+        </ul>
+        <ul>
+            <li><a href="#">SistemaXYZ</a></li>
+            <li class="hideOnMobile"><a href="index.html">Sistema3x3</a></li>
+            <li class="hideOnMobile"><a href="sistema4x4.html">Sistema4x4</a></li>
+            <li class="hideOnMobile"><a href="prueba.html">QUIZZ</a></li>
+            <li class="menu-button" onclick="showSidebar()"><a href="#"><svg xmlns="http://www.w3.org/2000/svg" height="26" viewBox="0 96 960 960" width="26"><path d="M120 816v-60h720v60H120Zm0-210v-60h720v60H120Zm0-210v-60h720v60H120Z"/></svg></a></li>
+        </ul>
+    </nav>
+    <div class="quiz-container">
+        <h1>Quiz: Sistemas de Ecuaciones</h1>
+        <div class="question">
+            <p id="question-text">¿Cuál es la solución de este sistema de ecuaciones?</p>
+        </div>
+        <ul class="options" id="options"></ul>
+        <div class="result" id="result"></div>
+        <button class="restart-btn" id="restart-btn" style="display: none;">Reiniciar Quiz</button>
+    </div>
+    <script>
+        const questions = [
+            { equation: "x + y = 5, x - y = 1", options: ["x = 3, y = 2", "x = 4, y = 1", "x = 2, y = 3"], correct: 0 },
+            { equation: "2x + 3y = 12, x - y = 2", options: ["x = 4, y = 0", "x = 3, y = 2", "x = 2, y = 3"], correct: 1 },
+            { equation: "3x - 2y = 6, x + y = 5", options: ["x = 3, y = 2", "x = 4, y = 1", "x = 2, y = 3"], correct: 0 }
+        ];
+
+        let currentQuestion = 0, score = 0;
+
+        const questionText = document.getElementById("question-text");
+        const optionsList = document.getElementById("options");
+        const resultDiv = document.getElementById("result");
+        const restartBtn = document.getElementById("restart-btn");
+
+        function loadQuestion() {
+            const question = questions[currentQuestion];
+            questionText.textContent = `Sistema: ${question.equation}`;
+            optionsList.innerHTML = "";
+            question.options.forEach((option, index) => {
+                const li = document.createElement("li");
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.addEventListener("click", () => checkAnswer(index));
+                li.appendChild(button);
+                optionsList.appendChild(li);
+            });
+        }
+
+        function checkAnswer(selected) {
+            if (selected === questions[currentQuestion].correct) score++;
+            if (++currentQuestion < questions.length) loadQuestion();
+            else showResult();
+        }
+
+        function showResult() {
+            questionText.textContent = "¡Quiz terminado!";
+            optionsList.innerHTML = "";
+            resultDiv.innerHTML = `<p>Puntuación: ${score} / ${questions.length}</p>`;
+            restartBtn.style.display = "block";
+        }
+
+        function restartQuiz() {
+            currentQuestion = score = 0;
+            resultDiv.innerHTML = "";
+            restartBtn.style.display = "none";
+            loadQuestion();
+        }
+
+        restartBtn.addEventListener("click", restartQuiz);
+        loadQuestion();
+
+        function showSidebar() {
+            document.querySelector('.sidebar').style.display = 'flex';
+        }
+
+        function hideSidebar() {
+            document.querySelector('.sidebar').style.display = 'none';
+        }
+    </script>
+</body>
+</html>

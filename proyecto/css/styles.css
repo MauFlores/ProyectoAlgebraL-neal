@@ -1,0 +1,178 @@
+:root{
+    --naranja:#B34B0C;
+    --naranja2: #7C3306;
+    --grisobscuro: #37322E;
+    --grisclaro: #524944;
+    --grismasclaro: #6C6A68;
+    --blanco:#B3B2B0;
+
+}
+
+
+*{
+
+  margin: 0;
+  padding: 0;
+}
+
+html{
+    font-size: 62.5%; /* reiniciar los pixeles para utilizar rems*/
+    box-sizing: border-box;
+    scroll-snap-type: y mandatory;
+
+}
+
+
+
+*, *:before, *:after {
+    box-sizing: inherit;
+  }
+
+h1{
+  text-align: center;
+  color: white;
+}
+h2{
+
+  text-align: center;
+  color: white;
+  font-size: 2rem;
+}
+
+
+  body{
+  min-height: 100vh;
+  background: url('../fotos/foto2.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+nav{
+  background-color: var(--naranja);
+  box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.1);
+}
+nav ul{
+  width: 100%;
+  list-style: none;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+nav li{
+  height: 50px;
+}
+nav a{
+  height: 100%;
+  padding: 0 30px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  color: var(--blancos);
+}
+nav a:hover{
+  background-color: #f0f0f0;
+}
+nav li:first-child{
+  margin-right: auto;
+}
+.sidebar{
+  position: fixed;
+  top: 0; 
+  right: 0;
+  height: 100vh;
+  width: 250px;
+  background-color: rgba(247, 136, 10, 0.546);
+  backdrop-filter: blur(12px);
+  box-shadow: -10px 0 10px rgba(0, 0, 0, 0.1);
+  list-style: none;
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+.sidebar li{
+  width: 100%;
+}
+.sidebar a{
+  width: 100%;
+}
+.menu-button{
+  display: none;
+}
+@media(max-width: 800px){
+  .hideOnMobile{
+    display: none;
+  }
+  .menu-button{
+    display: block;
+  }
+}
+@media(max-width: 400px){
+  .sidebar{
+    width: 100%;
+  }
+}
+
+/* Caja principal que contiene el formulario */
+main.conteidosombra {
+  text-align: center; /* Centra el contenido horizontalmente */
+  padding: 20px; /* Espaciado interno */
+  background-color: rgba(0, 0, 0, 0.8); /* Fondo negro con mayor opacidad */
+  max-width: 400px; /* Ancho máximo */
+  margin: 20px auto; /* Centra el cuadro en la página */
+  border-radius: 10px; /* Bordes redondeados */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra para destacar */
+  color: white;
+}
+
+
+/* Filas de inputs */
+.row {
+  display: flex;
+  justify-content: center; /* Centra horizontalmente */
+  align-items: center; /* Centra verticalmente */
+  margin: 10px 0; /* Espaciado vertical entre filas */
+}
+
+/* Inputs dentro de las filas */
+.row input {
+  width: 50px; /* Ancho de los inputs */
+  margin: 0 5px; /* Espaciado lateral entre inputs */
+  padding: 5px; /* Espaciado interno */
+  font-size: 1rem; /* Tamaño del texto */
+  color: white; /* Texto blanco */
+  background-color: black; /* Fondo negro */
+  border: 1px solid rgba(211, 211, 211, 0.5); /* Borde gris claro */
+  border-radius: 3px; /* Bordes redondeados */
+  text-align: center; /* Centrar el texto */
+  transition: all 0.3s ease; /* Transición para el hover */
+}
+
+/* Efecto hover en los inputs */
+.row input:hover {
+  background-color: white; /* Cambia a blanco */
+  color: black; /* Texto negro */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Efecto de brillo */
+}
+
+/* Botón */
+button {
+  background-color: var(--grisobscuro); /* Color base */
+  color: white; /* Texto blanco */
+  border: 1px solid rgba(211, 211, 211, 0.5); /* Borde gris */
+  padding: 8px 15px; /* Espaciado interno */
+  border-radius: 5px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor interactivo */
+  transition: all 0.3s ease; /* Suaviza la transición */
+  margin-top: 10px; /* Espaciado respecto a los inputs */
+}
+
+/* Hover en el botón */
+button:hover {
+  background-color: white; /* Cambia a blanco */
+  color: black; /* Texto negro */
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.8); /* Efecto de brillo */
+  border-color: rgba(211, 211, 211, 0.8); /* Refuerza el borde gris */
+}
+
